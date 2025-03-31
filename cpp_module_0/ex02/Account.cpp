@@ -5,7 +5,7 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
-// Costrutor
+// Constructor
 
 Account::Account( int initial_deposit ) : _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0)
 {
@@ -20,6 +20,36 @@ Account::Account( int initial_deposit ) : _amount(initial_deposit), _nbDeposits(
 Account::~Account()
 {
 
+};
+
+// Print
+
+void	Account::displayAccountsInfos( void )
+{
+
+};
+
+void	Account::displayStatus( void ) const
+{
+	
+};
+
+void	Account::_displayTimestamp( void )
+{
+	
+};
+
+// Setters
+
+void	Account::makeDeposit( int deposit )
+{
+	this->_amount += deposit;
+};
+
+bool	Account::makeWithdrawal( int withdrawal )
+{
+	this->_amount += withdrawal;
+	return (true);
 };
 
 // Getters
@@ -44,35 +74,7 @@ int	Account::getNbWithdrawals( void )
 	return(_totalNbWithdrawals);
 };
 
-// Print
-
-void	Account::displayAccountsInfos( void )
-{
-
-};
-
-void	Account::makeDeposit( int deposit )
-{
-	this->_amount += deposit;
-};
-
-bool	Account::makeWithdrawal( int withdrawal )
-{
-	this->_amount += withdrawal;
-	return (true);
-};
-
 int	Account::checkAmount( void ) const
 {
 	return (this->_amount);
-};
-
-void	Account::displayStatus( void ) const
-{
-
-};
-
-void	Account::_displayTimestamp( void )
-{
-
 };
