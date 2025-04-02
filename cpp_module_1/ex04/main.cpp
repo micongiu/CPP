@@ -1,53 +1,81 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdlib>
 
-int main(int argc, char** argv)
+void	checkArg(std::string& s1, std::string& s2, int argc, char **argv)
 {
 	if (argc != 4)
 	{
-		std::cout << "Launch the program with: ./Losers <filename> <s1> <s2>" << std::endl;
-		return 1;
+		std::cout << "Usage: ./stringReplace <filename> <s1> <s2>" << std::endl;
+		exit(-1);
 	}
 
-	std::string s1 = argv[2];
-	std::string s2 = argv[3];
+	s1 = argv[2];
+	s2 = argv[3];
 
 	if (s1.empty() || s2.empty())
 	{
-		std::cout << "Error: empty string" << std::endl;
-		return 1;
+		std::cout << "Error: Empty search or replace string." << std::endl;
+		exit(-1);
 	}
+}
 
-	std::ifstream inputFile(argv[1]);
+void readLine(std::string& content, char* argv_1)
+{
+	std::ifstream inputFile(argv_1);
 
 	if(!inputFile)
 	{
-		std::cerr << "Error: Could not open file." << std::endl;
-		return 3;
+		std::cout << "Error: Could not open file: " << argv_1 << std::endl;
+		exit(-1);
 	}
 
-	std::string content;
 	std::string line;
 
 	while(std::getline(inputFile, line))
 		content += line + "\n";
-	
+}
+
+void replaceLine(std::string& output, std::string content, std::string& s1, std::string& s2)
+{
 	std::size_t found;
-	if ((found = content.find(s1)) != std::string::npos)
+	std::size_t pos = 0;
+
+	while ((found = content.find(s1, pos)) != std::string::npos)
 	{
-		std::cout << "Found: " << found << '\n';
+		output += content.substr(pos, found - pos) + s2;
+		pos = found + s1.length();
 	}
-	
-	std::ofstream outFile((std::string(argv[1]) + ".replace").c_str());
+	output += content.substr(pos);
+}
+
+void writeToFile(std::string& output, char* argv_1)
+{
+	std::ofstream outFile((std::string(argv_1) + ".replace").c_str());
 	if (!outFile)
 	{
-		std::cerr << "Error: Could not create output file." << std::endl;
-		return 4;
+		std::cout << "Error: Could not create output file: " << (std::string(argv_1) + ".replace") << std::endl;
+		exit(-1);
 	}
 
-	outFile << content;
+	outFile << output;
 	outFile.close();
+}
+
+int main(int argc, char** argv)
+{
+	std::string s1;
+	std::string s2;
+	checkArg(s1, s2, argc, argv);
+
+	std::string content;
+	readLine(content, argv[1]);
+
+	std::string output;
+	replaceLine(output, content, s1, s2);
+
+	writeToFile(output, argv[1]);
 
 	return 0;
 }
