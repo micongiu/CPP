@@ -45,7 +45,7 @@ void	Account::_displayTimestamp( void )
 
 	time_t now = time(NULL);
 	struct tm* localTime = localtime(&now);
-	strftime(buffer, 20, "[%Y%m%d_%H%M%S]", localTime);
+	strftime(buffer, 20, "[%Y%m%d_%H%M%S] ", localTime);
 	std::cout << buffer;
 };
 
