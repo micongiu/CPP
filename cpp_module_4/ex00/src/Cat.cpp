@@ -27,5 +27,5 @@ Cat::~Cat()
 
 void Cat::makeSound() const
 {
-	std::cout << this->getType() << ": 'Bau Bau'" << std::endl;
+	std::cout << this->getType() << ": 'Miao Miao'" << std::endl;
 };
