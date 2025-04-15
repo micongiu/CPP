@@ -16,7 +16,7 @@ void Harl::_debug( void )
 
 void Harl::_info( void )
 {
-	std::cout << " cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
+	std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
 };
 
 void Harl::_warning( void )

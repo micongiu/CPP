@@ -9,7 +9,8 @@ COLOUR_END = \033[0m
 
 MAKEFLAGS += -s
 
-SRCS = main.cpp
+SRCS = $(wildcard src/*.cpp) \
+		main.cpp
 OBJ_DIR = obj
 OBJ = $(SRCS:src/%.cpp=$(OBJ_DIR)/%.o)
 

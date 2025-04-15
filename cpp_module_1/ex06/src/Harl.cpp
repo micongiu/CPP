@@ -19,7 +19,7 @@ void Harl::_debug( void )
 void Harl::_info( void )
 {
 	std::cout << "[ INFO ]" << std::endl;
-	std::cout << " cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
+	std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
 	std::cout << std::endl;
 };
 
@@ -41,18 +41,28 @@ void Harl::complain( std::string level )
 {
 	int level_int;
 
+	level_int = 0;
 	std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR"};
 	while (level_int < 4 && levels[level_int].compare(level))
-		level_int++ ;
+		level_int++;
 
 	switch (level_int)
 	{
 		case 0:
 			this->_debug();
+			this->_info();
+			this->_warning();
+			this->_error();
+			break ;
 		case 1:
 			this->_info();
+			this->_warning();
+			this->_error();
+			break ;
 		case 2:
 			this->_warning();
+			this->_error();
+			break ;
 		case 3:
 			this->_error();
 			break ;
