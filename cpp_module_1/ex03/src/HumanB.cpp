@@ -3,10 +3,12 @@
 HumanB::HumanB( std::string name ) : _name(name)
 {
 	this->_weapon = NULL;
+	std::cout << "HumanB: " << this->_name << " is create" << std::endl;
 };
 
 HumanB::~HumanB()
 {
+	std::cout << "HumanB: " << this->_name << " is dead" << std::endl;
 };
 
 void HumanB::setWeapon(Weapon& newWeapon)
@@ -21,4 +23,3 @@ void HumanB::attack() const
 	else
 		std::cout << this->_name << " is unarmed" << std::endl;
 }
-

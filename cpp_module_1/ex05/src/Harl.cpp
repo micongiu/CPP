@@ -2,9 +2,11 @@
 
 Harl::Harl()
 {
+	std::cout << "Harl is create" << std::endl;
 };
 Harl::~Harl()
 {
+	std::cout << "Harl is dead" << std::endl;
 };
 
 void Harl::_debug( void )

@@ -3,7 +3,7 @@
 #include <string>
 #include <cstdlib>
 
-void	checkArg(std::string& s1, std::string& s2, int argc, char **argv)
+void	checkArg( std::string& s1, std::string& s2, int argc, char **argv )
 {
 	if (argc != 4)
 	{
@@ -21,7 +21,7 @@ void	checkArg(std::string& s1, std::string& s2, int argc, char **argv)
 	}
 }
 
-void readLine(std::string& content, char* argv_1)
+void readLine( std::string& content, char* argv_1 )
 {
 	std::ifstream inputFile(argv_1);
 
@@ -37,7 +37,7 @@ void readLine(std::string& content, char* argv_1)
 		content += line + "\n";
 }
 
-void replaceLine(std::string& output, std::string content, std::string& s1, std::string& s2)
+void replaceLine( std::string& output, std::string content, std::string& s1, std::string& s2 )
 {
 	std::size_t found;
 	std::size_t pos = 0;
@@ -50,7 +50,7 @@ void replaceLine(std::string& output, std::string content, std::string& s1, std:
 	output += content.substr(pos);
 }
 
-void writeToFile(std::string& output, char* argv_1)
+void writeToFile( std::string& output, char* argv_1 )
 {
 	std::ofstream outFile((std::string(argv_1) + ".replace").c_str());
 	if (!outFile)
@@ -63,7 +63,7 @@ void writeToFile(std::string& output, char* argv_1)
 	outFile.close();
 }
 
-int main(int argc, char** argv)
+int main( int argc, char** argv )
 {
 	std::string s1;
 	std::string s2;
