@@ -10,13 +10,6 @@ Fixed::Fixed( const Fixed& src )
 	*this = src;
 };
 
-Fixed& Fixed::operator=( const Fixed& src )
-{
-	if (this != &src)
-		this->_fixed = src.getRawBits();
-	return (*this);
-};
-
 Fixed::Fixed(const int src)
 {
 	this->_fixed = src << Fixed::_fractionalBits;
@@ -26,6 +19,13 @@ Fixed::Fixed(const float src)
 {
 	this->_fixed = static_cast<int>(roundf(src * (1 << _fractionalBits)));
 }
+
+Fixed& Fixed::operator=( const Fixed& src )
+{
+	if (this != &src)
+		this->_fixed = src.getRawBits();
+	return (*this);
+};
 
 Fixed::~Fixed()
 {
@@ -40,7 +40,6 @@ void Fixed::setRawBits( int const raw )
 {
 	this->_fixed = raw;
 };
-
 
 float Fixed::toFloat(void) const
 {
@@ -85,7 +84,6 @@ bool Fixed::operator != (const Fixed& src) const
 	return(this->_fixed != src.getRawBits());
 };
 
-
 Fixed Fixed::operator+(const Fixed& src) const
 {
 	Fixed result;
@@ -118,7 +116,6 @@ Fixed Fixed::operator/(const Fixed& src) const
 	return (result);
 };
 
-
 Fixed& Fixed::operator++()
 {
 	this->_fixed++;
@@ -130,7 +127,6 @@ Fixed& Fixed::operator--()
 	this->_fixed--;
 	return(*this);
 };
-
 
 Fixed Fixed::operator++(int)
 {
@@ -147,7 +143,6 @@ Fixed Fixed::operator--(int)
 	operator--();
 	return tmp;
 };
-
 
 Fixed& Fixed::max(Fixed& a, Fixed& b)
 {
@@ -168,7 +163,6 @@ Fixed const& Fixed::min(Fixed const& a, Fixed const& b)
 {
 	return (a < b ? a : b);
 }
-
 
 std::ostream& operator<<(std::ostream& os, const Fixed& src)
 {
