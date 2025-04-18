@@ -9,8 +9,7 @@ Cat::Cat() : Animal()
 
 Cat::Cat(const Cat& src) : Animal(src)
 {
-	*this = src;
-	this->_brain = new Brain;
+	this->_brain = new Brain(*src._brain);
 	std::cout << this->getType() << " created as a copy of Cat" << std::endl;
 }
 
@@ -19,8 +18,10 @@ Cat& Cat::operator=( const Cat& src )
 	std::cout << this->getType() << " -assignation operator- called" << std::endl;
 	if (this != &src)
 	{
-		this->_type = src.getType();
-		this->_brain = src._brain;
+		Animal::operator=(src);
+		if (this->_brain)
+			delete this->_brain;
+		this->_brain = new Brain(*src._brain);
 	}
 	return (*this);
 };
@@ -28,10 +29,16 @@ Cat& Cat::operator=( const Cat& src )
 Cat::~Cat()
 {
 	std::cout << this->getType() << " destroyed" << std::endl;
-	delete this->_brain;
+	if (this->_brain)
+		delete this->_brain;
 };
+
+Brain* Cat::getBrain() const
+{
+	return (this->_brain);
+}
 
 void Cat::makeSound() const
 {
-	std::cout << this->getType() << ": 'Miao Miao'" << std::endl;
+	std::cout << this->getType() << ": 'Bau Bau'" << std::endl;
 };

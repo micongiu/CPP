@@ -4,41 +4,50 @@
 
 int main()
 {
-	std::cout << " --- CORRECT ANIMAL --- " << std::endl;
 	std::cout << "Animal object creation: " << std::endl;
-	const Animal* meta = new Animal();
+	const int arraySize = 6;
+	Animal* animals[arraySize];
 	std::cout << std::endl;
 
-	std::cout << "Dog object creation: " << std::endl;
-	const Animal* j = new Dog();
+	std::cout << "--- Creating " << arraySize / 2 << " new Dog ---" << std::endl;
+	for (int i = 0; i < arraySize / 2; i++)
+		animals[i] = new Dog();
+
 	std::cout << std::endl;
 
-	std::cout << "Cat object creation: " << std::endl;
-	const Animal* i = new Cat();
+	std::cout << "--- Creating " << arraySize / 2 << " new Cat ---" << std::endl;
+	for (int i = arraySize / 2; i < arraySize; i++)
+		animals[i] = new Cat();
 	std::cout << std::endl;
 
-	std::cout << "getType calls from Dog and Cat: " << std::endl;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	std::cout << "--- Making sounds ---" << std::endl;
+	for (int i = 0; i < arraySize; i++)
+		animals[i]->makeSound();
 	std::cout << std::endl;
 	
-	std::cout << "makeSound calls from Dog, Cat and Animal: " << std::endl;
-	j->makeSound();
-	i->makeSound(); //will output the cat sound!
-	meta->makeSound();
+	std::cout << "--- Deep copying test ---" << std::endl;
+	std::cout << "Creating a new Dog with a specific idea in its brain" << std::endl;
+
+	Dog originalDog;
+	originalDog.getBrain()->setIdea("Chase the cat", 0);
+	std::cout << "Original dog idea: " << originalDog.getBrain()->getIdea(0) << std::endl;
 	std::cout << std::endl;
 
-	std::cout << "Deleting objects: " << std::endl;
-	std::cout << "Animal object destruction: " << std::endl;
-	delete meta;
+	std::cout << "Copying the dog" << std::endl;
+	Dog copiedDog(originalDog);
 	std::cout << std::endl;
 
-	std::cout << "Dog object destruction: " << std::endl;
-	delete j;
+	std::cout << "Changing the idea of the original dog" << std::endl;
+	originalDog.getBrain()->setIdea("I love cats", 0);
 	std::cout << std::endl;
 
-	std::cout << "Cat object destruction: " << std::endl;
-	delete i;
+	std::cout << "Original dog idea: " << originalDog.getBrain()->getIdea(0) << std::endl;
+	std::cout << "Copied dog idea: " << copiedDog.getBrain()->getIdea(0) << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "--- Deleting animals ---" << std::endl;
+	for (int i = 0; i < arraySize; i++)
+		delete animals[i];
 
 	return 0;
 }
