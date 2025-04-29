@@ -1,6 +1,6 @@
 #include "../include/DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap("Default_clap_name"), ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap() : ClapTrap("DefaultClap"), ScavTrap(), FragTrap()
 {
 	this->_name = "Default";
 	this->_hitPoints = this->FragTrap::_hitPoints;
@@ -10,7 +10,7 @@ DiamondTrap::DiamondTrap() : ClapTrap("Default_clap_name"), ScavTrap(), FragTrap
 	std::cout << "-DiamondTrap- " << this->_name << " created" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap("Default_clap_name"), ScavTrap(name), FragTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap("DefaultClap"), ScavTrap(name), FragTrap(name)
 {
 	this->_name = name;
 	this->_hitPoints = this->FragTrap::_hitPoints;
@@ -38,7 +38,6 @@ DiamondTrap::~DiamondTrap()
 {
 	std::cout << "-DiamondTrap- " << this->_name << " destroyed." << std::endl;
 };
-
 
 void DiamondTrap::whoAmI(void)
 {
