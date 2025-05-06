@@ -2,13 +2,13 @@
 
 WrongAnimal::WrongAnimal() : _type("Defaul")
 {
-	std::cout << "-WrongAnimal- created" << std::endl;
+	std::cout << "WrongAnimal created" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& src) : _type("Defaul")
 {
 	*this = src;
-	std::cout << "-WrongAnimal- created as a copy of WrongAnimal" << std::endl;
+	std::cout << "WrongAnimal created as a copy of WrongAnimal" << std::endl;
 }
 
 WrongAnimal& WrongAnimal::operator=( const WrongAnimal& src )
@@ -21,7 +21,7 @@ WrongAnimal& WrongAnimal::operator=( const WrongAnimal& src )
 
 WrongAnimal::~WrongAnimal()
 {
-	std::cout << "-WrongAnimal- destroyed" << std::endl;
+	std::cout << "WrongAnimal destroyed" << std::endl;
 };
 
 void WrongAnimal::makeSound() const

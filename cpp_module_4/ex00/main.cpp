@@ -4,8 +4,6 @@
 #include "include/WrongAnimal.hpp"
 #include "include/WrongCat.hpp"
 
-
-
 int main()
 {
 	std::cout << " --- CORRECT ANIMAL --- " << std::endl;
@@ -43,8 +41,6 @@ int main()
 
 	std::cout << "Cat object destruction: " << std::endl;
 	delete i;
-
-
 
 	std::cout << std::endl << std::endl;
 	std::cout << " ------------------------------ " << std::endl;
