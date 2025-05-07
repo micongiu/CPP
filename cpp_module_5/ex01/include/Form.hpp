@@ -4,6 +4,8 @@
 #include <string>
 #include <iostream>
 
+class Bureaucrat;
+
 class Form
 {
 	private:
@@ -20,10 +22,12 @@ class Form
 
 		std::string getName() const;
 		bool getSigned() const;
-		void setSigned(bool status);
 		int  getRequiredSign() const;
 		int  getRequiredExecute() const;
 
+		void setSigned(bool status);
+
+		void beSigned(Bureaucrat& bur);
 
 		class GradeTooHighException : public std::exception
 		{
@@ -38,6 +42,6 @@ class Form
 		};
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& src);
+std::ostream& operator<<(std::ostream& os, Form& src);
 
 #endif
