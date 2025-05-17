@@ -9,7 +9,7 @@ Form::Form(std::string name, int requiredSign, int requiredExecute) :
 {
 	if (this->_requiredSign > 150 || this->_requiredExecute > 150)
 		throw GradeTooLowException();
-	if (this->_requiredSign > 1 || this->_requiredExecute > 1)
+	if (this->_requiredSign < 1 || this->_requiredExecute < 1)
 		throw GradeTooHighException();
 
 	std::cout << "Form " << this->_name << " created" << '\n';
@@ -35,7 +35,7 @@ Form::Form::~Form()
 
 void Form::beSigned(Bureaucrat& bur)
 {
-	if (this->getRequiredSign() >= bur.getValue())
+	if (this->getRequiredSign() < bur.getGrade())
 		throw GradeTooLowException();
 	
 	this->setSigned(true);

@@ -19,7 +19,7 @@ class Bureaucrat
 		~Bureaucrat();
 
 		const std::string getName();
-		int getValue();
+		int getGrade();
 
 		void increaseGrade();
 		void decreaseGrade();
