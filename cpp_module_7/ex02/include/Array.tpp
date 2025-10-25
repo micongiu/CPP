@@ -43,7 +43,7 @@ Array<T>::~Array()
 }
 
 template <typename T>
-T& Array<T>::operator[]( size_t idx )
+T& Array<T>::operator[]( size_t idx ) const
 {
 	if (idx >= this->len)
 		throw std::out_of_range("Index out of range");

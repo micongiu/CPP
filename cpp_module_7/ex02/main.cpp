@@ -34,7 +34,7 @@ int main()
 	std::cout << "\n--- Testing Array<std::string> ---" << std::endl;
 	try
 	{
-		Array<std::string> strArray(3);
+		const Array<std::string> strArray(3);
 		strArray[0] = "Hello";
 		strArray[1] = "World";
 		strArray[2] = "!";

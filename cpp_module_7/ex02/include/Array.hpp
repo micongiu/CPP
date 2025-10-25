@@ -17,7 +17,7 @@ class Array
 		Array&	operator=(const Array &src);
 		~Array();
 
-		T&		operator[](size_t idx);
+		T&		operator[](size_t idx) const;
 
 		size_t size() const;
 };
